@@ -95,7 +95,7 @@ class App(customtkinter.CTk):
         self.pictureview = customtkinter.CTkTabview(self, width=250 ,height= 100)
         self.pictureview.grid(row=1, column=3, padx=(20, 0), pady=(20, 0), sticky="nsew")
         self.pictureview.add("Weather status") 
-        self.weather_picture = customtkinter.CTkImage(light_image=Image.open("D:\practice python\weather app\media\snowflake.png"),size=(128, 128))
+        self.weather_picture = customtkinter.CTkImage(light_image=Image.open("./media/snowflake.png"),size=(128, 128))
         self.imgbutton = customtkinter.CTkButton(self.pictureview, image=self.weather_picture, text="", state="disabled")
         self.imgbutton.grid(row=3, column=0, padx=20, pady=(10, 10))
         
@@ -225,6 +225,5 @@ class App(customtkinter.CTk):
 
 if __name__ == "__main__":
     app = App()    
-    icopath = ImageTk.PhotoImage(master=App(), file="./media/logo.ico")
-    app.iconphoto(False, icopath)
+    
     app.mainloop()
