@@ -1,4 +1,4 @@
-<a heref="https://whatstheweatherhere.netlify.app/"><img src="https://img.shields.io/badge/Version%20-0.0.1%20ALPHA-brightgreen"></a>
+<a heref="https://whatstheweatherhere.netlify.app/"><img src="https://img.shields.io/badge/Version%20-0.0.5%20ALPHA-brightgreen"></a>
 <img src="https://img.shields.io/badge/Release%20Status%20-Unreleased-green">
 
 
