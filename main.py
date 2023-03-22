@@ -40,7 +40,7 @@ class App(customtkinter.CTk):
 
         # configure window
         self.title("WhatsTheWeather")
-        self.geometry(f"{1100}x{580}")
+        self.geometry(f"{1100}x{600}")
 
         # configure grid layout (4x4)
         self.grid_columnconfigure(1, weight=1)
@@ -55,7 +55,7 @@ class App(customtkinter.CTk):
         self.logo_label.grid(row=0, column=0, padx=20, pady=(20, 10))
         self.sidebar_button_1 = customtkinter.CTkButton(self.sidebar_frame,text="Github" , command=self.openweb("https://github.com/greeenboi"), fg_color=("#A5F1E9","#4E9F3D"),hover_color=("#E1FFEE","#1E5128"),text_color=("#7286D3","#D8E9A8"))
         self.sidebar_button_1.grid(row=1, column=0, padx=20, pady=10)
-        self.sidebar_button_2 = customtkinter.CTkButton(self.sidebar_frame,text="Support me", command=self.openweb("https://suvangs.netlify.app/"), fg_color=("#A5F1E9","#4E9F3D"),hover_color=("#E1FFEE","#1E5128"),text_color=("#7286D3","#D8E9A8"))
+        self.sidebar_button_2 = customtkinter.CTkButton(self.sidebar_frame,text="Support me", fg_color=("#A5F1E9","#4E9F3D"),hover_color=("#E1FFEE","#1E5128"),text_color=("#7286D3","#D8E9A8"))
         self.sidebar_button_2.grid(row=2, column=0, padx=20, pady=10)
         self.label_time=customtkinter.CTkLabel(self.sidebar_frame,text=self.local_time,fg_color=("#91D8E4","#3E2C41"),text_color=("#453C67","#D8E9A8"),corner_radius=8,width=50,height=15)
         self.label_time.grid(row=3, column=0)
@@ -63,11 +63,11 @@ class App(customtkinter.CTk):
         self.sidebar_button_3.grid(row=5, column=0, padx=20, pady=10)        
 
         # create label        
-        self.label =customtkinter.CTkLabel(self,text="ENTER CITY NAME",width=120,height=25,justify="left",fg_color=("#2CC985","#191A19"),text_color=("#000000","#CBE4DE"),corner_radius=8)
+        self.label =customtkinter.CTkLabel(self,text="ENTER CITY NAME   -->",width=120,height=25,justify="left",fg_color=("#7FBCD2","#191A19"),text_color=("#000000","#CBE4DE"),corner_radius=8)
         
         
         # create tabview
-        self.tabview = customtkinter.CTkTabview(self, width=250 ,height= 150,fg_color=("#7FBCD2","#191A19"))
+        self.tabview = customtkinter.CTkTabview(self, width=250 ,height= 150,fg_color=("#7FBCD2","#191A19"),segmented_button_selected_color=("#A5F1E9","#4E9F3D"),segmented_button_selected_hover_color=("#E1FFEE","#1E5128"),text_color=("#03001C","#D8E9A8"))
         self.tabview.grid(row=0, column=3, padx=(20, 0), pady=(20, 0), sticky="nsew")
         self.tabview.add("City Name")    
         self.tabview.add("Settings")
@@ -96,10 +96,10 @@ class App(customtkinter.CTk):
         self.scaling_optionemenu.grid(row=10, column=0, padx=20, pady=(10, 10))
         
         # create pitureview
-        self.pictureview = customtkinter.CTkTabview(self, width=250 ,height= 100,fg_color=("#7FBCD2","#191A19"),)
+        self.pictureview = customtkinter.CTkTabview(self, width=250 ,height= 100,fg_color=("#7FBCD2","#191A19"),segmented_button_selected_color=("#A5F1E9","#4E9F3D"),segmented_button_selected_hover_color=("#E1FFEE","#1E5128"),text_color=("#03001C","#D8E9A8"))
         self.pictureview.grid(row=1, column=3, padx=(20, 0), pady=(20, 0), sticky="nsew")
         self.pictureview.add("Weather status") 
-        self.weather_picture = customtkinter.CTkImage(light_image=Image.open("./media/snowflake.png"),size=(128, 128))
+        self.weather_picture = customtkinter.CTkImage(light_image=Image.open("./media/snowflake.png"),size=(200, 200))
         self.imgbutton = customtkinter.CTkButton(self.pictureview, image=self.weather_picture, text="", state="disabled",fg_color=("#A5F1E9","#4E9F3D"),hover_color=("#E1FFEE","#1E5128"),text_color=("#7286D3","#D8E9A8"))
         self.imgbutton.grid(row=3, column=0, padx=20, pady=(10, 10))
         
@@ -110,7 +110,7 @@ class App(customtkinter.CTk):
         self.progressbar_frame.grid_rowconfigure(4, weight=1)
         self.progressbar_1 = customtkinter.CTkProgressBar(self.progressbar_frame,fg_color=("gray92", "gray14"),progress_color=("gray92", "gray14"))
         self.progressbar_1.grid(row=2, column=0, padx=(20, 10), pady=(10, 10), sticky="ew")
-        self.seg_button_1 = customtkinter.CTkSegmentedButton(self.progressbar_frame,command=self.forecast_weather)
+        self.seg_button_1 = customtkinter.CTkSegmentedButton(self.progressbar_frame,command=self.forecast_weather,selected_color=("#A5F1E9","#4E9F3D"),selected_hover_color=("#E1FFEE","#1E5128"),text_color=("#03001C","#D8E9A8"))
         self.seg_button_1.grid(row=3, column=0, padx=(20, 10), pady=(10, 10), sticky="ew")
               
 
@@ -125,26 +125,28 @@ class App(customtkinter.CTk):
         self.seg_button_1.set("Today")
 
     def open_input_dialog_event(self):
-        dialog = customtkinter.CTkInputDialog(text="Type in the name of a city:", title="Enter city name",button_hover_color="green",fg_color=("#7FBCD2","#191A19"))
-        self.city = str(dialog.get_input())  
-        print(self.city)
-        self.get_weather()
+        dialog = customtkinter.CTkInputDialog(text="Type in the name of a city:", title="Enter city name",button_fg_color=("#A5F1E9","#4E9F3D"), button_hover_color=("#E1FFEE","#1E5128"),fg_color=("#7FBCD2","#191A19"),button_text_color=("#7286D3","#D8E9A8"))
+        self.city = dialog.get_input()
+        
+        
+        if self.city!=None:
+            self.get_weather()
     
     def openweb(self,url):   
-        print("opengit click") 
+        
         self.open1(url)    
     
     def open1(self,url):
-        #webbrowser.open(url,new=new)    
-        print("no")
+        webbrowser.open(url)            
     
     def refresh(self):
         self.time_now = datetime.now()
         self.local_time=self.time_now.strftime("%H:%M:%S")
         self.label_time.configure(text=self.local_time)
+        
     
     def selectlang(self,choice):
-        print(choice)
+        
         if(choice=="English"):
             self.lang="en"
         elif(choice=="Hindi"):
@@ -169,21 +171,25 @@ class App(customtkinter.CTk):
             self.temp = str(data["main"]["temp"])
             self.humid = str(data["main"]["humidity"])
             self.clouds = str(data["clouds"]["all"])
-            self.time_city = str(data["timezone"])
-            self.citytime=self.city_time()
-            print(f"weatherid is {self.weather_id}\nCoordinates are {self.coord[0]} and {self.coord[1]}")
-            self.weather_status()
+            self.time_city = int(data["timezone"])
+            #h=int(self.time_city/60)
+            #m=self.time_city%60
+            #if(h>=0):
+             #   s="+"
+            #else:
+              #  s=""
+            #self.citytime=f"GMT {s}{h}:{m}"            
+            self.citytime=self.time_city
+            self.weather_status()            
             
-            print( f"{self.desc}\nTemperature: {self.temp}°C\nHumidity: {self.humid}%\nCloudiness: {self.clouds}%\nTime in {self.city} is {self.citytime}")
             self.weather= f"Weather Details for {self.city}\n\nDescription: {self.desc}\nTemperature: {self.temp}\nHumidity: {self.humid}\nCloudiness: {self.clouds}%\nTime in {self.city} is {self.citytime}" 
-            self.loading_event(True)
-            
+            self.loading_event(True)            
             self.label.configure(text=self.weather,justify="center",font=customtkinter.CTkFont(size=15, weight="bold"))
             self.loading_event(False)
             
             
         else:
-            print( "Error: Could not retrieve weather data.")
+            
             self.string_input_button.configure(text="Error loading try again")
     
     def weather_status(self):
@@ -212,19 +218,19 @@ class App(customtkinter.CTk):
    
         
     def forecast_weather(self,value):        
-        url=f"http://api.openweathermap.org/data/2.5/forecast?lat={self.coord[1]}&lon={self.coord[0]}&appid={API_KEY}&units=metric&cnt=11&lang={self.lang}"
+        url=f"http://api.openweathermap.org/data/2.5/forecast?lat={self.coord[1]}&lon={self.coord[0]}&appid={API_KEY}&units=metric&cnt=16&lang={self.lang}"
         response = requests.get(url)
         
         data = response.json()
         if value=="Today":
             n=2
         elif value == "Tommorow":
-            n=6
+            n=9
         elif value == "Day After Tommorow":
-            n=10
+            n=15
         #data[]
         self.desc = data["list"][n]["weather"][0]["description"].capitalize()
-        
+        self.city = str(data["city"]["name"])
         self.weather_id= int(data["list"][n]["weather"][0]["id"])
         self.temp = str(data["list"][n]["main"]["temp"])
         self.humid = str(data["list"][n]["main"]["humidity"])
@@ -233,17 +239,16 @@ class App(customtkinter.CTk):
         self.datetime=str(data["list"][n]["dt_txt"])
         #self.citytime=self.city_time()
         self.weather_status()
-        self.weather= f"Weather Details for {self.city}\n\nDescription: {self.desc}\nTemperature: {self.temp}\nHumidity: {self.humid}\nCloudiness: {self.clouds}%\nPredicted Date and Time: {self.datetime}" 
+        self.weather= f"Weather Details for {self.city}\n\nDescription: {self.desc}\nTemperature: {self.temp} c\nHumidity: {self.humid}%\nCloudiness: {self.clouds}%\nForecast Date and Time: {self.datetime}" 
         self.loading_event(True)
-        time.sleep(5)
+        
         self.label.configure(text=self.weather,justify="center",font=customtkinter.CTkFont(size=15, weight="bold"))
         self.loading_event(False)
         
     def loading_event(self,value):
         if value==True:
             self.string_input_button.configure(text="LOADING...")    
-            self.progressbar_1.configure(progress_color=("#46C2CB","#4E9F3D"))
-            
+            self.progressbar_1.configure(progress_color=("#46C2CB","#4E9F3D"))           
             
             
         elif value==False:
