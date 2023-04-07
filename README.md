@@ -9,7 +9,7 @@ Its a weather app that uses API calls from openweatherapi.com to generate weathe
 The libraries to be used are:
 
 ```
-pip install tkinter
+pip install tk
 pip install customtkinter
 pip install requests
 pip install python-time
