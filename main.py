@@ -53,10 +53,14 @@ class App(customtkinter.CTk):
         self.sidebar_frame.grid_rowconfigure(4, weight=1)
         self.logo_label = customtkinter.CTkLabel(self.sidebar_frame, text="Weather", font=customtkinter.CTkFont(size=20, weight="bold"))
         self.logo_label.grid(row=0, column=0, padx=20, pady=(20, 10))
-        self.sidebar_button_1 = customtkinter.CTkButton(self.sidebar_frame,text="Github" , command=self.openweb("https://github.com/greeenboi"), fg_color=("#A5F1E9","#4E9F3D"),hover_color=("#E1FFEE","#1E5128"),text_color=("#7286D3","#D8E9A8"))
+        
+        #**my socials**
+        self.sidebar_button_1 = customtkinter.CTkButton(self.sidebar_frame,text="Github" , command=self.openweb, fg_color=("#A5F1E9","#4E9F3D"),hover_color=("#E1FFEE","#1E5128"),text_color=("#7286D3","#D8E9A8"))
         self.sidebar_button_1.grid(row=1, column=0, padx=20, pady=10)
-        self.sidebar_button_2 = customtkinter.CTkButton(self.sidebar_frame,text="Support me", fg_color=("#A5F1E9","#4E9F3D"),hover_color=("#E1FFEE","#1E5128"),text_color=("#7286D3","#D8E9A8"))
+        self.sidebar_button_2 = customtkinter.CTkButton(self.sidebar_frame,text="Support me", command=self.open1,fg_color=("#A5F1E9","#4E9F3D"),hover_color=("#E1FFEE","#1E5128"),text_color=("#7286D3","#D8E9A8"))
         self.sidebar_button_2.grid(row=2, column=0, padx=20, pady=10)
+        #*****
+        
         self.label_time=customtkinter.CTkLabel(self.sidebar_frame,text=self.local_time,fg_color=("#91D8E4","#3E2C41"),text_color=("#453C67","#D8E9A8"),corner_radius=8,width=50,height=15)
         self.label_time.grid(row=3, column=0)
         self.sidebar_button_3 = customtkinter.CTkButton(self.sidebar_frame,text="Refresh Local Time", command=self.refresh, fg_color=("#A5F1E9","#4E9F3D"),hover_color=("#E1FFEE","#1E5128"),text_color=("#7286D3","#D8E9A8"))
@@ -132,12 +136,12 @@ class App(customtkinter.CTk):
         if self.city!=None:
             self.get_weather()
     
-    def openweb(self,url):   
-        
-        self.open1(url)    
+    def openweb(self):           
+        webbrowser.open("https://github.com/greeenboi") 
     
-    def open1(self,url):
-        webbrowser.open(url)            
+    def open1(self):
+        webbrowser.open("https://github.com/greeenboi") 
+                   
     
     def refresh(self):
         self.time_now = datetime.now()
